@@ -103,16 +103,16 @@ function draw() {
     restart.x=camera.position.x;
     gameOver.visible = true;
     restart.visible = true;
-    //set velcity of each game object to 0
+    //definir velocidade de cada objeto de jogo como 0
     kangaroo.velocityY = 0;
     jungle.velocityX = 0;
     obstaclesGroup.setVelocityXEach(0);
     shrubsGroup.setVelocityXEach(0);
 
-    //change the trex animation
+    //mudar a animação do trex
     kangaroo.changeAnimation("collided",kangaroo_collided);
     
-    //set lifetime of the game objects so that they are never destroyed
+    //definir tempo de vida dos objetos de jogo para que eles nunca sejam destruídos
     obstaclesGroup.setLifetimeEach(-1);
     shrubsGroup.setLifetimeEach(-1);
     
@@ -122,16 +122,16 @@ function draw() {
   }
 
   else if (gameState === WIN) {
-    //set velcity of each game object to 0
+    //definir velocidade de cada objeto de jogo como 0
     jungle.velocityX = 0;
     kangaroo.velocityY = 0;
     obstaclesGroup.setVelocityXEach(0);
     shrubsGroup.setVelocityXEach(0);
     
-    //change the kangaroo animation
+    ///mudar a animação do canguru
     kangaroo.changeAnimation("collided",kangaroo_collided);
 
-    //set lifetime of the game objects so that they are never destroyed
+    //definir tempo de vida dos objetos de jogo para que eles nunca sejam destruídos
     obstaclesGroup.setLifetimeEach(-1);
     shrubsGroup.setLifetimeEach(-1);
   }
@@ -142,20 +142,20 @@ function draw() {
   textSize(20);
   stroke(3);
   fill("black")
-  text("Score: "+ score, camera.position.x,50);
+  text("Pontuação: "+ score, camera.position.x,50);
   
   if(score >= 5){
     kangaroo.visible = false;
     textSize(30);
     stroke(3);
     fill("black");
-    text("Congragulations!! You win the game!! ", 70,200);
+    text("Parabéns!! Você venceu o jogo!! ", 70,200);
     gameState = WIN;
   }
 }
 
 function spawnShrubs() {
-  //write code here to spawn the clouds
+  //escreva o código para gerar nuvens aqui
   if (frameCount % 150 === 0) {
 
     var shrub = createSprite(camera.position.x+500,330,40,10);
@@ -174,13 +174,13 @@ function spawnShrubs() {
       default: break;
     }
     
-    //assign scale and lifetime to the shrub           
+    //atribuir escala e vida ao arbusto      
     shrub.scale = 0.05;
-     //assign lifetime to the variable
+     //atribuir tempo de vida a variável
     shrub.lifetime = 400;
     
     shrub.setCollider("rectangle",0,0,shrub.width/2,shrub.height/2)
-    //add each cloud to the group
+    //adicionar cada nuvem ao grupo
     shrubsGroup.add(shrub);
     
   }
@@ -195,10 +195,10 @@ function spawnObstacles() {
     obstacle.addImage(obstacle1);
     obstacle.velocityX = -(6 + 3*score/100)
     obstacle.scale = 0.15;
-    //assign scale and lifetime to the obstacle           
+    //atribuir escala e tempo de vida ao obstáculo    
 
     obstacle.lifetime = 400;
-    //add each obstacle to the group
+    //adicionar cada obstáculo ao grupo
     obstaclesGroup.add(obstacle);
     
   }
